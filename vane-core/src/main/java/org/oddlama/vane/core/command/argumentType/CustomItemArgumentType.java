@@ -40,7 +40,7 @@ public class CustomItemArgumentType implements CustomArgumentType.Converted<Cust
             .stream()
             .filter(item -> item.key().equals(nativeType))
             .findFirst()
-            .orElseThrow();
+            .orElseThrow(() -> new CommandSyntaxException(CommandSyntaxException.BUILT_IN_EXCEPTIONS.dispatcherParseException(), new LiteralMessage("Custom item not found: " + nativeType.toString())));
     }
 
     @Override
